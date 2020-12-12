@@ -12,7 +12,6 @@ public class Day11 {
             }
         }
 
-
         while (true) {
             boolean result = run(chairs);
             if (!result) {
