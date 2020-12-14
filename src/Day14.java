@@ -51,8 +51,7 @@ public class Day14 {
             memoryLocation = String.format("%0" + (bitmask.length - memoryLocation.length()) + "d", 0).replace("0", "0") + memoryLocation;
             char[] memoryLocationArray = memoryLocation.toCharArray();
 
-
-            test(0, bitmask, memoryLocationArray, memory, value);
+            computeMemoryLocation(0, bitmask, memoryLocationArray, memory, value);
         }
         long result = 0;
         for (Long l : memory.values()) {
@@ -61,12 +60,12 @@ public class Day14 {
         return result;
     }
 
-    private void test(int start, char[] bitmask, char[] memoryLocationArray, Map<Long, Long> memory, long value) {
+    private void computeMemoryLocation(int start, char[] bitmask, char[] memoryLocationArray, Map<Long, Long> memory, long value) {
         for (int i = start; i < bitmask.length; i++) {
             if (bitmask[i] == 'X') {
                 for (int j = 0; j <= 1; j++) {
                     memoryLocationArray[i] = String.valueOf(j).charAt(0);
-                    test(i+1, bitmask, memoryLocationArray, memory, value);
+                    computeMemoryLocation(i+1, bitmask, memoryLocationArray, memory, value);
                 }
             }
             if (bitmask[i] == '1') {
